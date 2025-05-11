@@ -1,4 +1,4 @@
-package services;
+package org.services;
 
 import java.util.Currency;
 import java.util.UUID;

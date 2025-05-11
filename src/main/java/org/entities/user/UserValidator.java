@@ -1,7 +1,9 @@
-package entities.user;
+package org.entities.user;
 
-import static common.SystemErrors.INVALID_PASSWORD;
-import static common.SystemErrors.INVALID_USERNAME;
+import org.exceptions.UserOperationException;
+
+import static org.common.SystemErrors.INVALID_PASSWORD;
+import static org.common.SystemErrors.INVALID_USERNAME;
 
 public class UserValidator {
 
@@ -10,7 +12,8 @@ public class UserValidator {
         if (username.isBlank()
                 || username.length() < 5
                 || username.chars().noneMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(INVALID_USERNAME);
+            throw new UserOperationException(INVALID_USERNAME);
+
         }
     }
 
@@ -19,7 +22,8 @@ public class UserValidator {
         if (password.isBlank()
                 || password.length() != 6
                 || password.chars().anyMatch(Character::isLetter)) {
-            throw new IllegalArgumentException(INVALID_PASSWORD);
+            throw new UserOperationException(INVALID_PASSWORD);
         }
     }
+
 }

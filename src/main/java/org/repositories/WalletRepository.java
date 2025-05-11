@@ -1,6 +1,6 @@
-package repositories;
+package org.repositories;
 
-import entities.wallet.Wallet;
+import org.entities.wallet.Wallet;
 
 import java.util.HashMap;
 import java.util.List;

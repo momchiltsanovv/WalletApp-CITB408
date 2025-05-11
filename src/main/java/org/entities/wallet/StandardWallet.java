@@ -1,4 +1,4 @@
-package entities.wallet;
+package org.entities.wallet;
 
 import java.util.Currency;
 import java.util.UUID;

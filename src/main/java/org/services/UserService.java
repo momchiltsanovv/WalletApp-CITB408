@@ -1,6 +1,6 @@
-package services;
+package org.services;
 
-import entities.user.User;
+import org.entities.user.User;
 
 import java.util.List;
 

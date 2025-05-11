@@ -1,9 +1,9 @@
-package entities.wallet;
+package org.entities.wallet;
 
 import java.util.Currency;
 import java.util.UUID;
 
-import static common.SystemErrors.WITHDRAWAL_LIMIT_REACHED_FOR_DISPOSABLE_WALLET;
+import static org.common.SystemErrors.WITHDRAWAL_LIMIT_REACHED_FOR_DISPOSABLE_WALLET;
 
 public class DisposableWallet extends Wallet {
 

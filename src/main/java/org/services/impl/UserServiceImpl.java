@@ -1,14 +1,14 @@
-package services.impl;
+package org.services.impl;
 
-import core.UserSessionManager;
-import entities.user.User;
-import repositories.UserRepository;
-import services.UserService;
+import org.core.UserSessionManager;
+import org.entities.user.User;
+import org.repositories.UserRepository;
+import org.services.UserService;
 
 import java.util.List;
 
-import static common.LogMessages.*;
-import static common.SystemErrors.*;
+import static org.common.LogMessages.*;
+import static org.common.SystemErrors.*;
 
 
 public class UserServiceImpl implements UserService {

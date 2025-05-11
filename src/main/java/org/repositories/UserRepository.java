@@ -1,6 +1,6 @@
-package repositories;
+package org.repositories;
 
-import entities.user.User;
+import org.entities.user.User;
 
 import java.util.HashMap;
 import java.util.List;

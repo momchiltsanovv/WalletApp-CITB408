@@ -1,9 +1,11 @@
 package org.core;
 
-import services.UserService;
-import services.WalletService;
-import services.impl.UserServiceImpl;
-import services.impl.WalletServiceImpl;
+import org.exceptions.UserOperationException;
+import org.exceptions.WalletOperationException;
+import org.services.UserService;
+import org.services.WalletService;
+import org.services.impl.UserServiceImpl;
+import org.services.impl.WalletServiceImpl;
 
 import java.util.Arrays;
 import java.util.Currency;
@@ -33,15 +35,20 @@ public class Engine implements Runnable {
             try {
                 result = processInput();
                 if (result.equals("Exit")) {
+                    System.out.println("Goodbye!");
                     break;
                 }
                 System.out.println("\033[0;34m" + result + "\033[0m");
+            } catch (UserOperationException | WalletOperationException e) {
+                System.err.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.err.println("Input error: " + e.getMessage());
             } catch (Exception e) {
-                result = e.getMessage();
-                System.err.println(result);
+                System.err.println("Unexpected error: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
             }
         }
     }
+
 
     private String processInput() {
 
@@ -68,4 +75,5 @@ public class Engine implements Runnable {
         };
         return result;
     }
+
 }

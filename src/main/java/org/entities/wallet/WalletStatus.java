@@ -1,4 +1,4 @@
-package entities.wallet;
+package org.entities.wallet;
 
 public enum WalletStatus {
 

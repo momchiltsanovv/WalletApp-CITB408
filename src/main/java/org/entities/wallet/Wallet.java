@@ -1,12 +1,16 @@
-package entities.wallet;
+package org.entities.wallet;
 
+import org.exceptions.WalletOperationException;
+import org.utils.SerializationUtils;
+
+import java.io.Serializable;
 import java.util.Currency;
 import java.util.UUID;
 
-import static common.SystemErrors.INSUFFICIENT_FUNDS_IN_WALLET;
-import static common.SystemErrors.NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET;
+import static org.common.SystemErrors.INSUFFICIENT_FUNDS_IN_WALLET;
+import static org.common.SystemErrors.NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET;
 
-public abstract class Wallet {
+public abstract class Wallet implements Serializable {
 
     private final UUID id;
     private final UUID ownerId;
@@ -26,21 +30,16 @@ public abstract class Wallet {
 
     public void deposit(double amount) {
 
-        if (status == WalletStatus.INACTIVE || amount < 0) {
-            throw new IllegalStateException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
-        }
+        if (status == WalletStatus.INACTIVE || amount < 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
+
         this.balance += amount;
     }
 
     public void withdraw(double amount) {
 
-        if (status == WalletStatus.INACTIVE || amount < 0) {
-            throw new IllegalStateException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
-        }
+        if (status == WalletStatus.INACTIVE || amount < 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
 
-        if (balance < amount) {
-            throw new IllegalStateException(INSUFFICIENT_FUNDS_IN_WALLET);
-        }
+        if (balance < amount) throw new WalletOperationException(INSUFFICIENT_FUNDS_IN_WALLET);
 
         this.balance -= amount;
     }
@@ -76,6 +75,7 @@ public abstract class Wallet {
     public void setStatus(WalletStatus status) {
         this.status = status;
     }
+
 
     @Override
     public String toString() {

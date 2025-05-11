@@ -1,8 +1,9 @@
-package entities.user;
+package org.entities.user;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class User {
+public class User implements Serializable {
 
 
     private final UUID id;
@@ -23,17 +24,18 @@ public class User {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     void setUsername(String username) {
         UserValidator.validateUsername(username);
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     void setPassword(String password) {
         UserValidator.validatePassword(password);
         this.password = password;
     }
+
 }

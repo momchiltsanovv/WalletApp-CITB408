@@ -1,6 +1,6 @@
 package org.core;
 
-import entities.user.User;
+import org.entities.user.User;
 
 public class UserSessionManager implements SessionManager<User> {
 

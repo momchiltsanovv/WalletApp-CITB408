@@ -1,11 +1,11 @@
-package entities.wallet;
+package org.entities.wallet;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Currency;
 import java.util.UUID;
 
-import static common.SystemErrors.SAVINGS_PERIOD_NOT_CONCLUDED_YET;
+import static org.common.SystemErrors.SAVINGS_PERIOD_NOT_CONCLUDED_YET;
 
 public class SavingsWallet extends Wallet {
 

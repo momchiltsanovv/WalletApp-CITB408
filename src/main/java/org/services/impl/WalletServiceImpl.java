@@ -1,18 +1,18 @@
-package services.impl;
+package org.services.impl;
 
-import core.UserSessionManager;
-import entities.user.User;
-import entities.wallet.*;
-import repositories.WalletRepository;
-import services.WalletService;
+import org.core.UserSessionManager;
+import org.entities.user.User;
+import org.entities.wallet.*;
+import org.repositories.WalletRepository;
+import org.services.WalletService;
 
 import java.util.Currency;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static common.LogMessages.*;
-import static common.SystemErrors.*;
+import static org.common.LogMessages.*;
+import static org.common.SystemErrors.*;
 
 
 public class WalletServiceImpl implements WalletService {
