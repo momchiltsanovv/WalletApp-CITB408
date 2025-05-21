@@ -16,7 +16,7 @@ class DisposableWalletTest {
         String username = "constructorUser";
         Currency currency = Currency.getInstance("BGN");
 
-        DisposableWallet wallet = new DisposableWallet(ownerId, username, currency);
+        Wallet wallet = new DisposableWallet(ownerId, username, currency);
 
         assertNotNull(wallet.getId());
         assertEquals(ownerId, wallet.getOwnerId());
@@ -37,7 +37,7 @@ class DisposableWalletTest {
         assertEquals(WalletStatus.INACTIVE, w.getStatus());
     }
     @Test
-    void testToStringIncludesWithdrawals() {
+    void test_ToStringIncludesWithdrawals() {
         DisposableWallet w = new DisposableWallet(UUID.randomUUID(), "user2", Currency.getInstance("BGN"));
         w.deposit(10.0);
         w.withdraw(3.0);

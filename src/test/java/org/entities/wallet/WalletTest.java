@@ -35,34 +35,34 @@ class WalletTest {
 
     }
     @Test
-    void test_depositWhenAmountLessThan0() {
+    void test_depositWhenAmountLessThan0_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         assertThrows(WalletOperationException.class, () -> wallet.deposit(-10));
     } @Test
-    void test_depositWhenAmountIs0() {
+    void test_depositWhenAmountIs0_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         assertThrows(WalletOperationException.class, () -> wallet.deposit(0));
     }
     @Test
-    void test_withdrawWhenStatusInactive() {
+    void test_withdrawWhenStatusInactive_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         wallet.setStatus(WalletStatus.INACTIVE);
         assertThrows(WalletOperationException.class, () -> wallet.withdraw(100.0));
     }
 
     @Test
-    void test_withdrawWhenAmountLessThan0() {
+    void test_withdrawWhenAmountLessThan0_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         assertThrows(WalletOperationException.class, () -> wallet.withdraw(-10));
     }
     @Test
-    void test_withdrawWhenAmountIs0() {
+    void test_withdrawWhenAmountIs0_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         assertThrows(WalletOperationException.class, () -> wallet.withdraw(0));
     }
 
     @Test
-    void test_withdrawWhenBalanceLessThanAmount() {
+    void test_withdrawWhenBalanceLessThanAmount_ThenThrowsWalletOperationException() {
         StandardWallet wallet = new StandardWallet(UUID.randomUUID(), "user1", Currency.getInstance("BGN"));
         wallet.setBalance(50.0);
         assertThrows(WalletOperationException.class, () -> wallet.withdraw(100.0));
