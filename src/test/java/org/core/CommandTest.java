@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandTest {
 
     @Test
-    void testAllCommandEnumsExist() {
+    void test_AllCommandEnumsExist() {
         assertNotNull(Command.valueOf("Login"));
         assertNotNull(Command.valueOf("Register"));
         assertNotNull(Command.valueOf("Logout"));
@@ -20,7 +20,7 @@ class CommandTest {
     }
 
     @Test
-    void testEnumToStringAndOrdinal() {
+    void test_EnumToStringAndOrdinal() {
         assertEquals("Login", Command.Login.name());
         assertEquals(0, Command.Login.ordinal());
         assertEquals("Exit", Command.Exit.name());
@@ -28,7 +28,7 @@ class CommandTest {
     }
 
     @Test
-    void testValuesContainsAllEnums() {
+    void test_ValuesContainsAllEnums() {
         Command[] values = Command.values();
         assertEquals(9, values.length);
 
@@ -49,7 +49,7 @@ class CommandTest {
     }
 
     @Test
-    void testInvalidValueThrowsException() {
+    void test_InvalidValueThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> Command.valueOf("NonexistentCommand"));
     }
 }

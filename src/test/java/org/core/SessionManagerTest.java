@@ -17,20 +17,20 @@ class SessionManagerTest {
     }
 
     @Test
-    void testSessionInitiallyNull() {
+    void test_SessionInitiallyNull() {
         assertFalse(manager.hasActiveSession());
         assertNull(manager.getActiveSession());
     }
 
     @Test
-    void testSetActiveSession() {
+    void test_SetActiveSession() {
         manager.setActiveSession(user);
         assertTrue(manager.hasActiveSession());
         assertEquals(user, manager.getActiveSession());
     }
 
     @Test
-    void testTerminateActiveSession() {
+    void test_TerminateActiveSession() {
         manager.setActiveSession(user);
         manager.terminateActiveSession();
         assertFalse(manager.hasActiveSession());

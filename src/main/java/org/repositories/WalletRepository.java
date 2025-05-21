@@ -27,4 +27,9 @@ public class WalletRepository implements Repository<Wallet, UUID> {
                             .stream()
                             .toList();
     }
+
+    @Override
+    public void clear() {
+        walletStorage.clear();
+    }
 }

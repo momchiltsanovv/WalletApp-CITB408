@@ -90,7 +90,7 @@ class EngineTest {
     }
 
     @Test
-    void testRegister_Login_Exit() {
+    void test_RegisterLoginExit() {
         String commands = String.join(System.lineSeparator(),
                                       "Register user11 123456",
                                       "Login user11 123456",
@@ -109,7 +109,7 @@ class EngineTest {
     }
 
     @Test
-    void testUnknownCommandError() {
+    void test_UnknownCommandError() {
         String commands = String.join(System.lineSeparator(),
                                       "NonexistentCommand",
                                       "Exit"
@@ -127,7 +127,7 @@ class EngineTest {
     }
 
     @Test
-    void testEmptyCommandError() {
+    void test_EmptyCommandError() {
         String commands = String.join(System.lineSeparator(),
                                       "",
                                       "Exit"

@@ -10,4 +10,6 @@ public interface Repository<T, ID> {
     T getById(ID id);
 
     List<T> getAll();
+
+    void clear();
 }
