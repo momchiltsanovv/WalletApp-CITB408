@@ -128,8 +128,8 @@ class EngineTest {
 
     static class TestableEngine extends Engine {
         public TestableEngine(UserService userSvc, WalletService walletSvc, InputStream in) {
-            super(); // call the default constructor (initializes unused real services)
-            // Now set private fields via reflection
+            super();
+
             try {
                 var s = Engine.class.getDeclaredField("scanner");
                 var us = Engine.class.getDeclaredField("userService");

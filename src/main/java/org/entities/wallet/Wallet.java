@@ -30,14 +30,14 @@ public abstract class Wallet implements Serializable {
 
     public void deposit(double amount) {
 
-        if (status == WalletStatus.INACTIVE || amount < 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
+        if (status == WalletStatus.INACTIVE || amount <= 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
 
         this.balance += amount;
     }
 
     public void withdraw(double amount) {
 
-        if (status == WalletStatus.INACTIVE || amount < 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
+        if (status == WalletStatus.INACTIVE || amount <= 0) throw new WalletOperationException(NO_OPERATIONS_ALLOWED_FOR_NON_ACTIVE_WALLET);
 
         if (balance < amount) throw new WalletOperationException(INSUFFICIENT_FUNDS_IN_WALLET);
 
