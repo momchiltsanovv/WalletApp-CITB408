@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 import static org.common.LogMessages.SUCCESSFULLY_LOGGED_IN;
 import static org.common.LogMessages.SUCCESSFULLY_REGISTERED;
@@ -67,9 +68,9 @@ class EngineTest {
         }
 
         @Override public String getMyWallets() { return "[LOG] No wallets found. You may create one."; }
-        @Override public String deposit(java.util.UUID id, double a) { return "[LOG] Deposit successful! Your new balance is: 100.00 BGN."; }
-        @Override public String transfer(java.util.UUID id, String r, double a) { return "[LOG] transfer simulated"; }
-        @Override public String changeWalletStatus(java.util.UUID id, String s) { return "[LOG] Wallet status successfully changed to " + s; }
+        @Override public String deposit(UUID id, double a) { return "[LOG] Deposit successful! Your new balance is: 100.00 BGN."; }
+        @Override public String transfer(UUID id, String r, double a) { return "[LOG] transfer simulated"; }
+        @Override public String changeWalletStatus(UUID id, String s) { return "[LOG] Wallet status successfully changed to " + s; }
     }
 
     static class TestableEngine extends Engine {

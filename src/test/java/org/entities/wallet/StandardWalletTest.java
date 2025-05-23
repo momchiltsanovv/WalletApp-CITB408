@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Currency;
 import java.util.UUID;
 
+import static org.entities.wallet.WalletStatus.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StandardWalletTest {
@@ -22,7 +23,7 @@ class StandardWalletTest {
         assertEquals(username, wallet.getOwnerUsername());
         assertEquals(currency, wallet.getCurrency());
         assertEquals(20.0, wallet.getBalance());
-        assertEquals(WalletStatus.ACTIVE, wallet.getStatus());
+        assertEquals(ACTIVE, wallet.getStatus());
     }
 
 }
