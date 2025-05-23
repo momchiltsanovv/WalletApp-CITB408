@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserValidatorTest {
     @Test
-    void test_validUsername_WhenNameBlank() {
+    void test_validUsername_WhenNameBlank_ThrowsUserOperationException () {
         String name = "";
         assertThrows(UserOperationException.class, () -> new User(name, "123123"));
     }

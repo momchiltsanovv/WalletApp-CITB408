@@ -26,6 +26,8 @@ public class UserRepository implements Repository<User, UUID> {
         return USER_STORAGE.values().stream().toList();
     }
 
-    public void clear() { USER_STORAGE.clear(); }
+    public void clear() {
+        USER_STORAGE.clear();
+    }
 
 }

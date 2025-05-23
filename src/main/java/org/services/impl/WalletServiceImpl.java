@@ -70,7 +70,8 @@ public class WalletServiceImpl implements WalletService {
         validActiveSession();
         User activeUser = sessionManager.getActiveSession();
 
-        List<Wallet> userWallets = walletRepository.getAll().stream()
+        List<Wallet> userWallets = walletRepository.getAll()
+                                                   .stream()
                                                    .filter(wallet -> wallet.getOwnerId().equals(activeUser.getId()))
                                                    .toList();
 
@@ -97,7 +98,8 @@ public class WalletServiceImpl implements WalletService {
     public String transfer(UUID walletId, String receiverUsername, double amount) {
 
         Wallet senderWallet = getCurrentlyActiveUserWallet(walletId);
-        Wallet receiverWallet = walletRepository.getAll().stream()
+        Wallet receiverWallet = walletRepository.getAll()
+                                                .stream()
                                                 .filter(w -> w.getOwnerUsername().equals(receiverUsername) && w instanceof StandardWallet)
                                                 .findFirst()
                                                 .orElseThrow(() -> new IllegalStateException(NO_WALLET_FOUND_FOR_RECEIVER.formatted(receiverUsername)));
@@ -141,7 +143,8 @@ public class WalletServiceImpl implements WalletService {
         validActiveSession();
         User activeUser = sessionManager.getActiveSession();
 
-        return walletRepository.getAll().stream()
+        return walletRepository.getAll()
+                               .stream()
                                .filter(w -> w.getId().equals(walletId)
                                        && w.getOwnerId().equals(activeUser.getId())
                                       )
