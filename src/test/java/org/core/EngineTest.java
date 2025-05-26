@@ -1,7 +1,6 @@
 package org.core;
 
 import org.junit.jupiter.api.*;
-import org.mockito.Mockito;
 import org.services.UserService;
 import org.services.WalletService;
 
@@ -50,16 +49,17 @@ class EngineTest {
     @Test
     void testRegisterLoginExit_withMocks() {
         String commands = String.join(System.lineSeparator(),
-                                      "Register alice 123456",
-                                      "Login alice 123456",
+                                      "Register alice1 123456",
+                                      "Login alice1 123456",
                                       "Exit"
                                      );
         System.setIn(new ByteArrayInputStream(commands.getBytes(StandardCharsets.UTF_8)));
 
         UserService userService = mock(UserService.class);
         WalletService walletService = mock(WalletService.class);
-        when(userService.register("alice1", "123456")).thenReturn("[LOG] New user \"alice\" registered successfully.");
-        when(userService.login("alice1", "123456")).thenReturn("[LOG] User alice successfully logged in.");
+
+        when(userService.register("alice1", "123456")).thenReturn("[LOG] New user \"alice1\" registered successfully.");
+        when(userService.login("alice1", "123456")).thenReturn("[LOG] User alice1 successfully logged in.");
 
         Engine engine = new Engine();
         inject(engine, "userService", userService);
@@ -68,14 +68,13 @@ class EngineTest {
 
         engine.run();
 
-        // Assert
         String output = outContent.toString(StandardCharsets.UTF_8);
+
         assertTrue(output.contains("Welcome to Smart Wallet!"));
-        assertTrue(output.contains("[LOG] New user \"alice\" registered successfully."));
-        assertTrue(output.contains("[LOG] User alice successfully logged in."));
+        assertTrue(output.contains("[LOG] New user \"alice1\" registered successfully."));
+        assertTrue(output.contains("[LOG] User alice1 successfully logged in."));
         assertTrue(output.contains("Goodbye!"));
 
-        // Verify service interactions
         verify(userService, times(1)).register("alice1", "123456");
         verify(userService, times(1)).login("alice1", "123456");
         verifyNoInteractions(walletService);
@@ -114,7 +113,8 @@ class EngineTest {
 
         UserService userService = mock(UserService.class);
         WalletService walletService = mock(WalletService.class);
-        when(walletService.deposit(UUID.fromString(fakeWalletId), 45.67)).thenReturn("[LOG] Deposit successful!");
+        when(walletService.deposit(UUID.fromString(fakeWalletId), 45.67))
+                .thenReturn("[LOG] Deposit successful!");
 
         Engine engine = new Engine();
         inject(engine, "userService", userService);
@@ -125,6 +125,7 @@ class EngineTest {
 
         String output = outContent.toString(StandardCharsets.UTF_8);
         assertTrue(output.contains("[LOG] Deposit successful!"));
+
         verify(walletService, times(1)).deposit(UUID.fromString(fakeWalletId), 45.67);
     }
 }
