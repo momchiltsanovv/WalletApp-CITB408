@@ -36,17 +36,17 @@ Example commands:
 
 ## Commands List
 
-| Command                | Usage Template                                | Description                                    |
-|------------------------|-----------------------------------------------|------------------------------------------------|
-| Register               | Register (username) (password)                | Registers a new user                           |
-| Login                  | Login (username) (password)                   | Logs in                                        |
-| Logout                 | Logout                                        | Logs out                                       |
-| NewWallet              | NewWallet (currency) (type of wallet)         | Creates a wallet (Standard/Savings/Disposable) |
-| MyWallets              | MyWallets                                     | Lists owned wallets                            |
-| Deposit                | Deposit (walletId) (amount)                   | Deposit funds in a wallet                      |
+| Command                | Usage Template                                  | Description                                    |
+|------------------------|-------------------------------------------------|------------------------------------------------|
+| Register               | Register (username) (password)                  | Registers a new user                           |
+| Login                  | Login (username) (password)                     | Logs in                                        |
+| Logout                 | Logout                                          | Logs out                                       |
+| NewWallet              | NewWallet (currency) (type of wallet)           | Creates a wallet (Standard/Savings/Disposable) |
+| MyWallets              | MyWallets                                       | Lists owned wallets                            |
+| Deposit                | Deposit (walletId) (amount)                     | Deposit funds in a wallet                      |
 | Transfer               | Transfer (walletId) (receiverUsername) (amount) | Transfer funds to another user               |
-| ChangeWalletStatus     | ChangeWalletStatus (walletId) status type     | Set wallet status (ACTIVE/INACTIVE)            |
-| Exit                   | Exit                                          | Close the app                                  |
+| ChangeWalletStatus     | ChangeWalletStatus (walletId) (status type)     | Set wallet status (ACTIVE/INACTIVE)            |
+| Exit                   | Exit                                            | Close the app                                  |
 
 ---
 
