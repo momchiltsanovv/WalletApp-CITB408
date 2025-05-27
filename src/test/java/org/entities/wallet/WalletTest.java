@@ -15,7 +15,7 @@ class WalletTest {
     @Test
     void test_ConstructorInitializesFields() {
         UUID ownerId = UUID.randomUUID();
-        String username = "testUser";
+        String username = "testUser1";
         Currency currency = Currency.getInstance("BGN");
 
         StandardWallet wallet = new StandardWallet(ownerId, username, currency);
