@@ -26,18 +26,18 @@ class UserTest {
 
     @Test
     void test_InvalidUsernameThrowsException() {
-        assertThrows(UserOperationException.class, () -> new User("abc", "123456")); // too short
-        assertThrows(UserOperationException.class, () -> new User("nodigits", "123456")); // no digit
-        assertThrows(UserOperationException.class, () -> new User("", "123456")); // blank
-        assertThrows(UserOperationException.class, () -> new User("    ", "123456")); // blank but with spaces
+        assertThrows(UserOperationException.class, () -> new User("abc", "123456"));
+        assertThrows(UserOperationException.class, () -> new User("nodigits", "123456"));
+        assertThrows(UserOperationException.class, () -> new User("", "123456"));
+        assertThrows(UserOperationException.class, () -> new User("    ", "123456"));
     }
 
     @Test
     void test_InvalidPasswordThrowsException() {
-        assertThrows(UserOperationException.class, () -> new User("user5", "abc123")); // contains letter
-        assertThrows(UserOperationException.class, () -> new User("user5", "12345"));  // too short
-        assertThrows(UserOperationException.class, () -> new User("user5", "1234567"));  // too long
-        assertThrows(UserOperationException.class, () -> new User("user5", ""));  // blank
+        assertThrows(UserOperationException.class, () -> new User("user5", "abc123"));
+        assertThrows(UserOperationException.class, () -> new User("user5", "12345"));
+        assertThrows(UserOperationException.class, () -> new User("user5", "1234567"));
+        assertThrows(UserOperationException.class, () -> new User("user5", ""));
     }
 
     @Test
