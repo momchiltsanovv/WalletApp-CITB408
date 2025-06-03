@@ -15,11 +15,7 @@ public class Main {
 
 
 
-        User user = new User("user1", "123456");
-        SerializationUtils.serialize(user, "user.ser");
 
-        StandardWallet wallet = new StandardWallet(user.getId(), user.getUsername(), Currency.getInstance("BGN"));
-        SerializationUtils.serialize(wallet,"wallet.ser");
 
     }
 

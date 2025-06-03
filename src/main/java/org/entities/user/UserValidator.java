@@ -11,7 +11,8 @@ public class UserValidator {
 
         if (username.isBlank()
                 || username.length() < 5
-                || username.chars().noneMatch(Character::isDigit)) {
+                || username.chars()
+                           .noneMatch(Character::isDigit)) {
             throw new UserOperationException(INVALID_USERNAME);
 
         }
@@ -21,7 +22,8 @@ public class UserValidator {
 
         if (password.isBlank()
                 || password.length() != 6
-                || password.chars().anyMatch(Character::isLetter)) {
+                || password.chars()
+                           .anyMatch(Character::isLetter)) {
             throw new UserOperationException(INVALID_PASSWORD);
         }
     }
