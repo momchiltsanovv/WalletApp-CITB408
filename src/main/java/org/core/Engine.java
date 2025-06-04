@@ -93,7 +93,9 @@ public class Engine implements Runnable {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Unknown command: " + tokens[0]);
         }
-        String[] data = Arrays.stream(tokens).skip(1).toArray(String[]::new);
+        String[] data = Arrays.stream(tokens)
+                              .skip(1)
+                              .toArray(String[]::new);
 
 
         result = switch (command) {

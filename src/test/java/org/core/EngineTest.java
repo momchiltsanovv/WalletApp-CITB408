@@ -1,25 +1,31 @@
 package org.core;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 import org.services.UserService;
 import org.services.WalletService;
+import org.utils.SerializationUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class EngineTest {
-
+    
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
     private final InputStream originalIn = System.in;
-
     private ByteArrayOutputStream outContent;
     private ByteArrayOutputStream errContent;
+    private MockedStatic<SerializationUtils> serializationUtilsMockedStatic;
 
     @BeforeEach
     void setUp() {
@@ -27,13 +33,11 @@ class EngineTest {
         errContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent, true, StandardCharsets.UTF_8));
         System.setErr(new PrintStream(errContent, true, StandardCharsets.UTF_8));
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.setOut(originalOut);
-        System.setErr(originalErr);
-        System.setIn(originalIn);
+        serializationUtilsMockedStatic = Mockito.mockStatic(SerializationUtils.class);
+        serializationUtilsMockedStatic.when(() -> SerializationUtils.serialize(Mockito.any(), Mockito.anyString()))
+                                      .thenAnswer(inv -> null);
+        serializationUtilsMockedStatic.when(() -> SerializationUtils.deserialize(Mockito.anyString(), Mockito.any()))
+                                      .thenReturn(Collections.emptyList());
     }
 
     static void inject(Object target, String fieldName, Object value) {
@@ -43,6 +47,16 @@ class EngineTest {
             field.set(target, value);
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+        System.setIn(originalIn);
+        if (serializationUtilsMockedStatic != null) {
+            serializationUtilsMockedStatic.close();
         }
     }
 
